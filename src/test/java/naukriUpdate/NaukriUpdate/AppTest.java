@@ -8,7 +8,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.interactions.Actions;
-
+import org.openqa.selenium.chrome.ChromeOptions;
 import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
@@ -36,8 +36,9 @@ public class AppTest extends TestCase
 	        assertTrue( true );
 	        
 	       
-			
-			WebDriver driver = new ChromeDriver();
+			ChromeOptions options = new ChromeOptions();
+			options.setHeadless(true);
+			WebDriver driver = new ChromeDriver(options);
 			driver.manage().window().maximize();
 			driver.manage().timeouts().implicitlyWait(10000, TimeUnit.MILLISECONDS);
 			driver.get("https://www.naukri.com/mnjuser/homepage");
