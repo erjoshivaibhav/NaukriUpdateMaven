@@ -37,7 +37,7 @@ public class AppTest extends TestCase
 	        
 	       
 			ChromeOptions options = new ChromeOptions();
-			options.setHeadless(true);
+			//options.setHeadless(true);
 			WebDriver driver = new ChromeDriver(options);
 			driver.manage().window().maximize();
 			driver.manage().timeouts().implicitlyWait(10000, TimeUnit.MILLISECONDS);
