@@ -38,7 +38,7 @@ public class AppTest extends TestCase {
             if (platform.get().equalsIgnoreCase("remote_docker")) {
                 co.setPlatformName("linux");
                 co.setPageLoadStrategy(PageLoadStrategy.EAGER);
-                driver = new RemoteWebDriver(new URL("http://172.22.176.1:4444/wd/hub"), co);
+                driver = new RemoteWebDriver(new URL("http://172.22.176.1:4444"), co);
 
             } else if (platform.get().equalsIgnoreCase("local")) {
                 driver = new ChromeDriver();
