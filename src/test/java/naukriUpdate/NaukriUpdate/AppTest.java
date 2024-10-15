@@ -31,17 +31,24 @@ public class AppTest extends TestCase {
     public void testApp() throws InterruptedException, MalformedURLException {
         assertTrue(true);
         WebDriver driver = null;
+        ChromeOptions co = new ChromeOptions();
 
         Optional<String> platform = Optional.ofNullable(System.getProperty("platform"));
         if (platform.isPresent()) {
-            if (platform.get().equalsIgnoreCase("remote")) {
-                ChromeOptions co = new ChromeOptions();
+            if (platform.get().equalsIgnoreCase("remote_docker")) {
                 co.setPlatformName("linux");
                 co.setPageLoadStrategy(PageLoadStrategy.EAGER);
                 driver = new RemoteWebDriver(new URL("http://localhost:4444"), co);
 
             } else if (platform.get().equalsIgnoreCase("local")) {
                 driver = new ChromeDriver();
+            }else if (platform.get().equalsIgnoreCase("remote_git")) {
+                co.addArguments("--headless");
+                co.addArguments("--disable-gpu");
+                co.addArguments("--no-sandbox");
+                co.addArguments("--remote-allow-origins=*");
+                driver= new ChromeDriver(co);
+
             }
             else {
                 System.out.println("Incorrect input of platform....setting to chromedriver");
