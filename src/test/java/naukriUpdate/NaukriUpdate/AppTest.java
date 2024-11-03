@@ -30,6 +30,7 @@ public class AppTest extends TestCase {
 
     public void testApp() throws InterruptedException, MalformedURLException {
         assertTrue(true);
+
         WebDriver driver = null;
         ChromeOptions co = new ChromeOptions();
 
@@ -63,6 +64,7 @@ public class AppTest extends TestCase {
 
 
             //WebDriver driver = new ChromeDriver();
+            driver.manage().timeouts().pageLoadTimeout(15000, TimeUnit.MILLISECONDS);
             driver.manage().window().maximize();
             driver.manage().timeouts().implicitlyWait(10000, TimeUnit.MILLISECONDS);
             driver.get("https://www.naukri.com/mnjuser/homepage");
@@ -104,8 +106,6 @@ public class AppTest extends TestCase {
 
         }
 
-
-//			Assert.assertEquals(null, null);
 
 
     }
